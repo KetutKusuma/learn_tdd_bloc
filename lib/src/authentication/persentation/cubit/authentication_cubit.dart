@@ -35,27 +35,31 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     );
 
     result.fold(
+        // if failure
         (lFailure) => emit(
               AuthenticationError(
                 lFailure.errorMessage,
               ),
             ),
+        // if success
         (_) => emit(const UserCreated()));
   }
 
   Future<void> getUsers() async {
     emit(
-      const GettingUser(),
+      const GettingUsers(),
     );
 
     final result = await _getUsers();
 
     result.fold(
+      // if failure
       (lFailure) => emit(
         AuthenticationError(
           lFailure.errorMessage,
         ),
       ),
+      // if success
       (rUsers) => emit(
         UserLoaded(rUsers),
       ),

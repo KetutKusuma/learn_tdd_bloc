@@ -15,8 +15,8 @@ class CreatingUser extends AuthenticationState {
   const CreatingUser();
 }
 
-class GettingUser extends AuthenticationState {
-  const GettingUser();
+class GettingUsers extends AuthenticationState {
+  const GettingUsers();
 }
 
 class UserCreated extends AuthenticationState {

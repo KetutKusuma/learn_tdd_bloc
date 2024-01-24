@@ -28,7 +28,13 @@ void main() {
       () async {
         // Arrange
         when(
-          () => client.post(any(), body: any(named: "body")),
+          () => client.post(
+            any(),
+            body: any(named: "body"),
+            headers: {
+              'Content-type': 'application-json',
+            },
+          ),
         ).thenAnswer(
           (_) async => http.Response(
             "User created successfully",
@@ -50,12 +56,19 @@ void main() {
         );
 
         verify(
-          () => client.post(Uri.https(kBaseUrl, kUserEndPoint),
-              body: jsonEncode({
+          () => client.post(
+            Uri.https(kBaseUrl, kUserEndPoint),
+            body: jsonEncode(
+              {
                 "createdAt": "createdAt",
                 "name": "name",
                 "avatar": "avatar",
-              })),
+              },
+            ),
+            headers: {
+              'Content-type': 'application-json',
+            },
+          ),
         ).called(1);
 
         verifyNoMoreInteractions(client);
@@ -71,6 +84,9 @@ void main() {
           () => client.post(
             any(),
             body: any(named: "body"),
+            headers: {
+              'Content-type': 'application-json',
+            },
           ),
         ).thenAnswer(
           (_) async => http.Response("Invalid Email Address", 400),
@@ -92,15 +108,21 @@ void main() {
 
         verify(
           () => client.post(
-              Uri.https(
-                kBaseUrl,
-                kUserEndPoint,
-              ),
-              body: jsonEncode({
+            Uri.https(
+              kBaseUrl,
+              kUserEndPoint,
+            ),
+            body: jsonEncode(
+              {
                 'createdAt': 'createdAt',
                 'name': 'name',
                 'avatar': 'avatar',
-              })),
+              },
+            ),
+            headers: {
+              'Content-type': 'application-json',
+            },
+          ),
         ).called(1);
 
         verifyNoMoreInteractions(client);

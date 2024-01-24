@@ -50,7 +50,7 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     emit(
-      const GettingUser(),
+      const GettingUsers(),
     );
 
     final result = await _getUsers();
