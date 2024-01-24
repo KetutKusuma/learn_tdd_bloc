@@ -32,6 +32,8 @@ void main() {
       //**
       // THEN ANSWER DIGUNAKAN UNTUK FUNCTION
       // YANG ASYNC */
+      //**
+      // THEN THROW DIGUNAKAN UNTUK ERROR (*) */
     ).thenAnswer((_) async => const Right(null));
 
     //** ACT */

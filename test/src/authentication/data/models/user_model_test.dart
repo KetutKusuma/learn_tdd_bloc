@@ -70,4 +70,18 @@ void main() {
       expect(result, equals(tJsonU));
     });
   });
+
+  group("copyWith", () {
+    test(
+      "should be return a [UserModel] with updated data",
+      () {
+        // Arrange
+        // Act
+        final result = tModel.copyWith(name: 'Uhuy');
+        // Assert
+        expect(result.name, equals("Uhuy"));
+        expect(result, isNot(tModel));
+      },
+    );
+  });
 }
